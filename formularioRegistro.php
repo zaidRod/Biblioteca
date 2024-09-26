@@ -17,28 +17,28 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
 <link rel="stylesheet" href="style.css">
 <div class="formulario">
     <link rel="stylesheet" href="style.css">
-    <h1> Formulario de registro </h1>
+    <p class="titulo"> Alta usuario </p>
     <!-- Indico donde enviare los datos luego de que se le de enviar -->
     <form action="confirmarRegistro.php" method="post">
-        <div>
+        <div class="camposForm">
             <label> Nombre: </label>
             <input type="text" name="name" value="<?php echo $nombre; ?>" required>
-        </div>
+        </div class="camposForm">
 
-        <div>
+        <div class="camposForm">
             <label> Edad: </label>
             <input type="text" name="age" value="<?php echo $edad; ?>" required>
-        </div>
+        </div class="camposForm">
 
-        <div>
+        <div class="camposForm">
             <label> Nick: </label>
             <input type="text" name="nick" value="<?php echo $nick; ?>" required>
-        </div>
+        </div class="camposForm">
 
-        <div>
+        <div class="camposForm">
             <label> Contraseña: </label>
             <input type="password" name="password" value="<?php echo $password; ?>" required>
-        </div>
+        </div class="camposForm">
 
         <input type="submit" name="send">
         <!-- En casi de cancelar envio al Index-->

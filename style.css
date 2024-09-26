@@ -1,3 +1,4 @@
+/*Cabecera*/
  .contenedor {
      display: flex;
      align-items: center;
@@ -9,45 +10,57 @@
      width: 300px;
 
  }
-
+ 
  .textoCab {
-     background-color: beige;
-     margin-right: 20px;
-     padding: 40px;
-     font-size: 20px;
+    background-color: beige;
+    margin-right: 20px;
+    padding: 40px;
+    font-size: 20px;
 
+}
+
+
+
+ .titulo {
+    text-align: center;
+    font-size: 30px;
+    
  }
 
- .contenedorForm {
 
+/*Formularios*/
 
-     background-color: aquamarine;
- }
-
- a {
+ .enlace {
      margin: 20px;
-     font-size: 30px;
+     font-size: 15px;
      text-decoration: underline;
-
+     text-align: right;
+     
  }
 
  .formulario {
-
      text-align: center;
-
-
-
-
+     
  }
 
- label {
-     margin-right: 20px;
+ .camposForm {
+     margin: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
  }
 
- input[type="text"],
- input[type="password"] {
-     padding: 8px;
-     /* Espaciado interno */
-     border: 1px solid #ccc;
-     /* Borde gris */
+ label{
+    margin-right:10px ;
+    width: 100px;
  }
+
+ input {
+    border-radius: 4px;
+    
+    
+    
+    
+ }
+
+ 

@@ -11,28 +11,28 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
 <link rel="stylesheet" href="style.css">
 
 <div class="formulario">
-    <h1> Formulario de confirmación </h1>
+    <p class="titulo"> Confirmación </p>
     <!--Pendiente por implementar -->
     <form action="confirmacion.php" method="post">
         <!--Muestro los valores recibidos a la vez que los relleno en los input ocultos para enviarlos en caso de correción -->
-        <div>
-            <label> Nombre: </label> <?php echo $nombre ?>
-            <input type="hidden" name="name" value="<?php echo $nombre; ?>">
+        <div class="camposForm">
+            <label> Nombre: </label> 
+            <input name="name" value="<?php echo $nombre; ?>">
         </div>
 
-        <div>
-            <label> Edad: </label> <?php echo $edad ?>
-            <input type="hidden" name="age" value="<?php echo $edad; ?>">
+        <div class="camposForm">
+            <label> Edad: </label> 
+            <input name="age" value="<?php echo $edad; ?>">
         </div>
 
-        <div>
-            <label> Nick: </label> <?php echo $nick ?>
-            <input type="hidden" name="nick" value="<?php echo $nick; ?>">
+        <div class="camposForm">
+            <label> Nick: </label> 
+            <input name="nick" value="<?php echo $nick; ?>">
         </div>
 
-        <div>
-            <label> Contraseña: </label> <?php echo $password ?>
-            <input type="hidden" name="password" value="<?php echo $password; ?>">
+        <div class="camposForm">
+            <label> Contraseña: </label> 
+            <input name="password" value="<?php echo $password; ?>">
         </div>
         <!-- Se realiza el envio de los datos de nuevo al formulario anterior -->
         <button type="submit" formaction="formularioRegistro.php">Corregir Datos</button>

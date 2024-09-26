@@ -1,23 +1,21 @@
-<div class="contenedorForm">
-    <p>
-        Iniciar sesón
-    </p>
-
+<p class="titulo">
+    Iniciar sesión
+</p>
+<div class="formulario">
     <form action="iniciarSesion.php" method="post">
-        Usuario:
-        <input type="text" name="user" required><br><br>
+        <div class="camposForm">
+            <label>Usuario: </label>
+            <input type="text" name="user" required><br>
+        </div>
 
-        Contraseña:
-        <input type="password" name="password" required><br><br>
-
-        <input type="submit" value="Enviar">
-
+        <div class="camposForm">
+            <label>Contraseña:</label>
+            <input type="password" name="password" required><br>
+        </div>
+            <input type="submit" value="Enviar">
+        
     </form>
     <br>
-
-    <a href="formularioRegistro.php">Nuevo usuario </a> 
-
-
-
-    
+    <a class="enlace" href="formularioRegistro.php">Nuevo usuario </a>
 </div>
+<br>
