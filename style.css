@@ -1,0 +1,53 @@
+ .contenedor {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+ .imagen {
+     height: 100px;
+     width: 300px;
+
+ }
+
+ .textoCab {
+     background-color: beige;
+     margin-right: 20px;
+     padding: 40px;
+     font-size: 20px;
+
+ }
+
+ .contenedorForm {
+
+
+     background-color: aquamarine;
+ }
+
+ a {
+     margin: 20px;
+     font-size: 30px;
+     text-decoration: underline;
+
+ }
+
+ .formulario {
+
+     text-align: center;
+
+
+
+
+ }
+
+ label {
+     margin-right: 20px;
+ }
+
+ input[type="text"],
+ input[type="password"] {
+     padding: 8px;
+     /* Espaciado interno */
+     border: 1px solid #ccc;
+     /* Borde gris */
+ }
