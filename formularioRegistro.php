@@ -14,6 +14,11 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
 
 }
 ?>
+
+<?php
+include "cabecera.html";
+echo "<p class='textoCab'> Pantalla de registro </p> </div>";
+?>
 <link rel="stylesheet" href="style.css">
 <div class="formulario">
     <link rel="stylesheet" href="style.css">
@@ -41,8 +46,9 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
         </div class="camposForm">
 
         <input type="submit" name="send">
-        <!-- En casi de cancelar envio al Index-->
-        <button type="submit" formaction="index.php"> Cancelar </button>
+        <!-- En caso de cancelar envio al Index-->
+        <!-- <button type="button" > Cancelar </button> -->
+         <a href="index.php"> Cancelar </a>
 
 
     </form>

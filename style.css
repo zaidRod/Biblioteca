@@ -31,10 +31,11 @@
 /*Formularios*/
 
  .enlace {
-     margin: 20px;
+     
      font-size: 15px;
      text-decoration: underline;
-     text-align: right;
+     margin: 20px;
+     display: inline-block;
      
  }
 

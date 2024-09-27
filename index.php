@@ -11,6 +11,8 @@
 <body>
     <?php
     include "cabecera.html";
+
+    echo "<p class='textoCab'> Pantalla de index.php </p> </div>" ;
     //Verificación de si se ha iniciado la sesión
     if (isset($_SESSION["user"]) && $_SESSION['user'] == "Admin") {
         //Almacenamiento de las variables
