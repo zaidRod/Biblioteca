@@ -1,21 +1,44 @@
+<!-- Esta parte es HTML que se ejecuta en el cliente, es decir, el navegador del usuario. -->
+
 <p class="titulo">
     Iniciar sesión
 </p>
+
 <div class="formulario">
+    <!-- 
+    El formulario tiene como acción la página iniciarSesion.php. 
+    Cuando el usuario presiona "Enviar", el formulario envía los datos ingresados (usuario y contraseña) al servidor mediante el método POST.
+    -->
     <form action="iniciarSesion.php" method="post">
         <div class="camposForm">
+            <!-- Campo donde el usuario ingresa su nombre de usuario.
+            Este input es obligatorio porque tiene el atributo "required".
+            -->
             <label>Usuario: </label>
             <input type="text" name="user" required><br>
         </div>
 
         <div class="camposForm">
+            <!-- Campo donde el usuario ingresa su contraseña.
+            Este input también es obligatorio, y el campo "password" oculta el texto ingresado por seguridad.
+            -->
             <label>Contraseña:</label>
             <input type="password" name="password" required><br>
         </div>
-            <input type="submit" value="Enviar">
+
+        <!-- Botón de envío del formulario.
+        Cuando el usuario presiona "Enviar", los datos se envían al servidor (iniciarSesion.php), donde se procesarán.
+        -->
+        <input type="submit" value="Enviar">
         
     </form>
+
     <br>
-    <a class="enlace" href="formularioRegistro.php">Nuevo usuario </a>
+
+    <!-- Enlace para llevar al usuario a la página de registro (formularioRegistro.php) si no tiene una cuenta.
+    Este enlace es solo una navegación en el lado del cliente, no requiere interacción con el servidor.
+    -->
+    <a class="enlace" href="formularioRegistro.php">Nuevo usuario</a>
 </div>
+
 <br>
