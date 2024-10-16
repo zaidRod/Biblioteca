@@ -1,5 +1,5 @@
 <?php
-require_once '../model/libreriaModel.php';
+require_once 'model/libreriaModel.php';
 
 
 class LibreriaController
@@ -20,7 +20,7 @@ class LibreriaController
     public function iniciarSesion()
     {
         session_start();
-
+        // verico que si existan las variables de usuario y contraseña enviadas por el formulario.
         if (isset($_POST['user']) && isset($_POST['password'])) {
 
             // Esto ocurre en el servidor para su posterior verificación.
@@ -36,8 +36,8 @@ class LibreriaController
                 // También guardo el tiempo de inicio de la sesión para gestionar la duración.
                 $_SESSION['tiempoSesion'] = time();
 
-
-                include '../view/adminView.php';
+                //Envio la vista
+                header("Location: view/adminView.php");
                 exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
 
             } elseif ($usuario == 'user' && $contra == '123') {
@@ -49,11 +49,11 @@ class LibreriaController
                 $_SESSION['tiempoSesion'] = time();
 
                 //Realizo el include de la vista
-                include '../view/usuarioView.php';
+                header("Location: view/usuarioView.php");
                 exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
             } else {
                 // Si las credenciales son incorrectas, redirijo al usuario nuevamente a index.php.
-                header("Location: index.php");
+                header(header: "Location: index.php");
                 exit(); // Se finaliza la ejecución.
             }
         }
@@ -64,9 +64,5 @@ class LibreriaController
     }
 
 }
-// Comprobar si se está enviando el formulario (esto lo maneja el controlador)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller = new LibreriaController();
-    $controller->iniciarSesion(); // Llama al método iniciarSesion del controlador
-}
+
 ?>

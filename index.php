@@ -1,12 +1,16 @@
 <!-- Se le indica al servidor que se iniciara una sesión, por lo que el servidor gestiona el usuario -->
-<?php session_start() ?>
+<?php
+//Importo el fichero de controlador
+require_once 'controller/libreriaController.php';
+$controller = new LibreriaController();
+session_start() ?>
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Index </title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="view/style.css">
 </head>
 
 <body>
@@ -14,36 +18,23 @@
     <?php
     //Se solicita al servidor la cabecera de la web, por lo que él envia como respuesta el archivo HTML.
     // Asi mismo, este archivo se despliega e interpreta el HTML en la pantalla del cliente. 
-    include "cabecera.html";
+    include "view/cabecera.html";
     // El servidor envia el mensaje con la clase para que pueda ser renderizado por la parte del cliente.
     echo "<p class='textoCab'> Pantalla de index.php </p> </div>";
 
-    //Verificación de si se ha iniciado la sesión, apartado que se ejecuta en el servidor.
-    if (isset($_SESSION["user"]) && $_SESSION['user'] == "Admin") {
-        //Almacenamiento de las variables
-        $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
-        $usuario = $_SESSION["user"];
-        $tiempoMaximo = 60 * 30;
-        // El servidor responde con la información del usuario y la hora de inicio. 
-        echo "<p class='campoUsuario'> user: $usuario | hora de inicio: $horaInicio </p>";
-        echo " <p class='titulo'> Bienvenido a LibroSphere <p> ";
+    // Compruebo si se ha redirijido con la acción del login
+    if (isset($_GET['action'])) {
+        $action = $_GET['action'];
 
-
-        //Terminación de la sesion
-        if (time() - $_SESSION["tiempoSesion"] > $tiempoMaximo) {
-            // Destruir la sesión si ha pasado más de 2 minutos
-            session_unset();//Borro las variables
-            session_destroy(); // Destruir la sesión
-            header("Location: index.php"); // Redirigir al usuario al login 
-            exit();
+        if ($action == 'login') {
+            //Llamo al controller con el método de inciar sesión
+            $controller->iniciarSesion();
         }
-
-        // Si el usuario no es "Admin" o la sesión no está iniciada, se solicita al servidor el formulario de inicio de sesión.
-        // El servidor envía el formulario "formularioInicio.html" como parte de la respuesta HTML.
+        // En caso contrario muestro el formulario
     } else {
-
-        include "formularioInicio.html";
+        include 'view/formularioInicio.html';
     }
+
     ?>
 
 </body>
