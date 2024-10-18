@@ -14,12 +14,13 @@ class LibreriaController
     public function listarLibros()
     {
         $libros = $this->modelo->cargarLibros();
+        return $libros;
 
     }
 
     public function iniciarSesion()
     {
-        session_start();
+        //session_start();
         // verico que si existan las variables de usuario y contraseña enviadas por el formulario.
         if (isset($_POST['user']) && isset($_POST['password'])) {
 
@@ -42,6 +43,7 @@ class LibreriaController
 
             } elseif ($usuario == 'user' && $contra == '123') {
 
+                $libros = $this->modelo->cargarLibros();
                 // Si las credenciales son correctas, se guarda el usuario en la sesión.
                 $_SESSION["user"] = "user";
 
@@ -49,7 +51,7 @@ class LibreriaController
                 $_SESSION['tiempoSesion'] = time();
 
                 //Realizo el include de la vista
-                header("Location: view/usuarioView.php");
+                include 'view/usuarioView.php';
                 exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
             } else {
                 // Si las credenciales son incorrectas, redirijo al usuario nuevamente a index.php.

@@ -74,6 +74,54 @@
     margin-inline: 10px;
  }
 
+ /* Vista de usuario */
+
+ .portada{
+   height: 150px;
+   width: 100px;
+   margin-right: 20px;
+
+ }
+
+ .promo{
+   color: orange;
+   font-weight: bold;
+ }
+ 
+ .contenedorLibros{
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+   align-items: center;
+   justify-content: center;
+   
+ }
+
+ .fichaLibro{
+   padding: 10px;
+   display: flex;
+   align-items: center;
+   border-radius: 8px;
+   border: 1px solid black;
+   width: 350px;
+   position: relative;
+
+ }
+
+ .botonComprar{
+   margin-top: 120px;
+   
+ }
+ .infoLibro{
+   height: 180px;
+   width: 200px;
+   
+ }
+ 
+
+ 
+
+
 
 
  

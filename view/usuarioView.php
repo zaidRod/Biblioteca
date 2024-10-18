@@ -9,52 +9,14 @@
 </head>
 
 <body>
-
     <?php
-    session_start();
-    include "cabecera.html";
-    // El servidor envia el mensaje con la clase para que pueda ser renderizado por la parte del cliente.
-    echo "<p class='textoCab'> Pantalla de usuario.php </p> </div>";
-    
     //Almacenamiento de las variables
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
     $tiempoMaximo = 60 * 30;
     // El servidor responde con la información del usuario y la hora de inicio. 
     echo "<p class='campoUsuario'> user: $usuario | hora de inicio: $horaInicio </p>";
-    echo " <p class='titulo'> Bienvenido a LibroSphere <p> ";
 
-
-    //Terminación de la sesion
-    if (time() - $_SESSION["tiempoSesion"] > $tiempoMaximo) {
-        // Destruir la sesión si ha pasado más de 2 minutos
-        session_unset();//Borro las variables
-        session_destroy(); // Destruir la sesión
-        header("Location: index.php"); // Redirigir al usuario al login 
-        exit();
-    } 
-
-
-    ?>
-
-</body>
-
-</html>
-
-
-<?php
-
-
-/* echo "vista de usuario";
- //Verificación de si se ha iniciado la sesión, apartado que se ejecuta en el servidor.
- if (isset($_SESSION["user"]) && $_SESSION['user'] == "Admin") {
-    //Almacenamiento de las variables
-    $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
-    $usuario = $_SESSION["user"];
-    $tiempoMaximo = 60 * 30;
-    // El servidor responde con la información del usuario y la hora de inicio. 
-    echo "<p class='campoUsuario'> user: $usuario | hora de inicio: $horaInicio </p>";
-    echo " <p class='titulo'> Bienvenido a LibroSphere <p> ";
 
 
     //Terminación de la sesion
@@ -65,11 +27,64 @@
         header("Location: index.php"); // Redirigir al usuario al login 
         exit();
     }
+    ?>
+    <!-- Verifico que se haya creado la variable  $libros antes de crear la tabla -->
+    <?php if ((isset($libros))): ?>
+        <div class="contenedorLibros">
+            <?php foreach ($libros->libro as $unLibro): ?>
+                <div class="fichaLibro">
+                    <?php echo "<img class='portada' src=assets/img/$unLibro->portada>" ?>
+                    <div class="infoLibro">
+                        <?php
+                        echo "<p> $unLibro->titulo</p>";
+                        echo "<p> $unLibro->autor</p>";
+                        echo "<p> $unLibro->categoria</p>";
+                        echo ($unLibro->promocion == 'si') ? "<p class='promo'> En promoción </p>" : "";
+                        ?>
+                    </div>
+                    <div class="botonComprar">
+                        <button> Comprar </button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
 
-    // Si el usuario no es "Admin" o la sesión no está iniciada, se solicita al servidor el formulario de inicio de sesión.
-    // El servidor envía el formulario "formularioInicio.html" como parte de la respuesta HTML.
-} else {
+        </div>
 
-    include "formularioInicio.html";
-} */
-?>
+
+        <!-- <table>
+            <tbody>
+                <?php foreach ($libros->libro as $unLibro): ?>
+                    <tr class="fichaLibro">
+                        <td><?php echo "<img class='portada' src=assets/img/$unLibro->portada>" ?></td>
+                        <td> <?php
+                        echo "<p> $unLibro->titulo</p>";
+                        echo "<p> $unLibro->autor</p>";
+                        echo "<p> $unLibro->categoria</p>";
+                        echo ($unLibro->promocion == 'si') ? "<p class='promo'> En promoción </p>" : "";
+                        ?>
+                        </td>
+
+                        
+
+
+
+
+                    </tr>
+                <?php endforeach; ?>
+
+            </tbody>
+        </table> -->
+
+    <?php else:
+        echo "Error al cargar libros";
+    endif;
+    ?>
+
+
+
+
+
+
+</body>
+
+</html>

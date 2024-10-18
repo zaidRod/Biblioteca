@@ -29,6 +29,8 @@ session_start() ?>
         if ($action == 'login') {
             //Llamo al controller con el método de inciar sesión
             $controller->iniciarSesion();
+            
+            
         }
         // En caso contrario muestro el formulario
     } else {
