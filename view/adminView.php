@@ -11,11 +11,6 @@
 <body>
 
     <?php
-    session_start();
-    include "cabecera.html";
-    // El servidor envia el mensaje con la clase para que pueda ser renderizado por la parte del cliente.
-    echo "<p class='textoCab'> Pantalla de administración.php </p> </div>";
-
     //Almacenamiento de las variables
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
@@ -35,6 +30,30 @@
     }
 
     ?>
+
+    <div class="contenedorEnlaces">
+        <div class="fichaEnlaces">
+            <a>
+               <img class="iconoGestion" src="assets/img/gClientes.png">
+            </a>
+            <p> Gestión de clientes </p>
+        </div>
+
+        <div class="fichaEnlaces">
+            <a>
+                <img class="iconoGestion" src="assets/img/gLibros.png">
+            </a>
+            <p> Gestión de libros </p>
+        </div>
+
+        <div class="fichaEnlaces">
+            <a>
+                <img class="iconoGestion" src="assets/img/gPedidos.png">
+            </a>
+            <p> Gestión de pedidos </p>
+        </div>
+
+    </div>
 
 </body>
 

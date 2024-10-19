@@ -36,14 +36,14 @@
                     <?php echo "<img class='portada' src=assets/img/$unLibro->portada>" ?>
                     <div class="infoLibro">
                         <?php
-                        echo "<p> $unLibro->titulo</p>";
-                        echo "<p> $unLibro->autor</p>";
-                        echo "<p> $unLibro->categoria</p>";
-                        echo ($unLibro->promocion == 'si') ? "<p class='promo'> En promoción </p>" : "";
+                        echo "<p> Titulo: $unLibro->titulo</p>";
+                        echo "<p> Autor: $unLibro->autor</p>";
+                        echo "<p> Categoría: $unLibro->categoria</p>";
+                        echo ($unLibro->promocion == 'si') ? "<p class='promo'> Promoción -30% </p>" : "";
                         ?>
                     </div>
-                    <div class="botonComprar">
-                        <button> Comprar </button>
+                    <div class="contenedorBotonComprar">
+                        <button class="botonComprar"> Comprar </button>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -51,29 +51,7 @@
         </div>
 
 
-        <!-- <table>
-            <tbody>
-                <?php foreach ($libros->libro as $unLibro): ?>
-                    <tr class="fichaLibro">
-                        <td><?php echo "<img class='portada' src=assets/img/$unLibro->portada>" ?></td>
-                        <td> <?php
-                        echo "<p> $unLibro->titulo</p>";
-                        echo "<p> $unLibro->autor</p>";
-                        echo "<p> $unLibro->categoria</p>";
-                        echo ($unLibro->promocion == 'si') ? "<p class='promo'> En promoción </p>" : "";
-                        ?>
-                        </td>
-
-                        
-
-
-
-
-                    </tr>
-                <?php endforeach; ?>
-
-            </tbody>
-        </table> -->
+       
 
     <?php else:
         echo "Error al cargar libros";

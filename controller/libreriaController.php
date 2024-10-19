@@ -38,7 +38,7 @@ class LibreriaController
                 $_SESSION['tiempoSesion'] = time();
 
                 //Envio la vista
-                header("Location: view/adminView.php");
+                include 'view/adminView.php';
                 exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
 
             } elseif ($usuario == 'user' && $contra == '123') {
