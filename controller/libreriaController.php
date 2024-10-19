@@ -20,7 +20,6 @@ class LibreriaController
 
     public function iniciarSesion()
     {
-        //session_start();
         // verico que si existan las variables de usuario y contraseña enviadas por el formulario.
         if (isset($_POST['user']) && isset($_POST['password'])) {
 

@@ -18,13 +18,13 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
 
 <?php
 // Este archivo se carga en el lado del servidor, pero el HTML resultante se envía al cliente.
-include "cabecera.html";
-// Envío un mensaje al cliente indicando que está en la pantalla de registro.
-// Este texto es parte de la respuesta HTML que se enviará al navegador del cliente.
-echo "<p class='textoCab'> Pantalla de registro </p> </div>";
+echo "<div class='contenedor'>
+    <img  class='imagen' src='../view/icono.PNG'>
+   <p class='textoCab'> Pantalla de registro </p> </div>";
 ?>
+
 <!-- Incluyo el Css  -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../view/style.css">
 <div class="formulario">
     <link rel="stylesheet" href="style.css">
     <p class="titulo"> Alta usuario </p>
@@ -55,7 +55,7 @@ echo "<p class='textoCab'> Pantalla de registro </p> </div>";
         <input type="submit" name="send">
         <!-- En caso de cancelar envio al Index-->
         <!-- <button type="button" > Cancelar </button> -->
-         <a href="index.php"> Cancelar </a>
+         <a href="../index.php"> Cancelar </a>
          </div>
 
 

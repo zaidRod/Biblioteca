@@ -9,14 +9,16 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
 }
 
 // Incluyo la cabecera HTML desde el archivo separado. Esta acción ocurre en el servidor, y luego se envía el HTML resultante al cliente.
-include "cabecera.html";
+
 
 // Imprimo un mensaje indicando que se está en la pantalla de envío. El resultado de esta línea se envía como HTML al cliente.
-echo "<p class='textoCab'> Pantalla de envío </p> </div>";
+echo "<div class='contenedor'>
+    <img  class='imagen' src='../view/icono.PNG'>
+    <p class='textoCab'> Pantalla de envío </p> </div>";
 ?>
 
 <!-- Enlace a la hoja de estilos que se aplica en el lado del cliente -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../view/style.css">
 
 <!-- Mensaje dinámico para mostrar que el usuario ha sido creado satisfactoriamente. -->
 <p class="titulo"> El usuario <?php echo $nick; ?> ha sido creado satisfactoriamente.</p>
@@ -35,5 +37,5 @@ echo "<p class='textoCab'> Pantalla de envío </p> </div>";
     ?> <br>
 
     <!-- Enlace para regresar a la página de inicio -->
-    <a href="index.php" class="enlace"> Volver al inicio </a>
+    <a href="../index.php" class="enlace"> Volver al inicio </a>
 </div>
