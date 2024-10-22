@@ -14,21 +14,9 @@
     //Almacenamiento de las variables
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
-    $tiempoMaximo = 60 * 30;
-    // El servidor responde con la información del usuario y la hora de inicio. 
+    // El servidor responde con la información del usuario y la hora de inicio y los coloca en la cabecera.
     echo "<p class='campoUsuario'> user: $usuario | hora de inicio: $horaInicio </p>";
     echo " <p class='titulo'> Bienvenido a LibroSphere <p> ";
-
-
-    //Terminación de la sesion
-    if (time() - $_SESSION["tiempoSesion"] > $tiempoMaximo) {
-        // Destruir la sesión si ha pasado más de 2 minutos
-        session_unset();//Borro las variables
-        session_destroy(); // Destruir la sesión
-        header("Location: index.php"); // Redirigir al usuario al login 
-        exit();
-    }
-
     ?>
 
     <div class="contenedorEnlaces">

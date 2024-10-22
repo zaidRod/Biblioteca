@@ -10,32 +10,24 @@
 
 <body>
     <?php
-    //Almacenamiento de las variables
+    // Almacenamos el usuario y la hora de inicio de sesión extraídos de la sesión para mostrarlos en la interfaz
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
-    $tiempoMaximo = 60 * 30;
-    // El servidor responde con la información del usuario y la hora de inicio. 
     echo "<p class='campoUsuario'> user: $usuario | hora de inicio: $horaInicio </p>";
-
-
-
-    //Terminación de la sesion
-    if (time() - $_SESSION["tiempoSesion"] > $tiempoMaximo) {
-        // Destruir la sesión si ha pasado más de 2 minutos
-        session_unset();//Borro las variables
-        session_destroy(); // Destruir la sesión
-        header("Location: index.php"); // Redirigir al usuario al login 
-        exit();
-    }
     ?>
+
     <!-- Verifico que se haya creado la variable  $libros antes de crear la tabla -->
     <?php if ((isset($libros))): ?>
         <div class="contenedorLibros">
+            <!-- Recorremos cada libro dentro del objeto XML $libros y mostramos su información -->
             <?php foreach ($libros->libro as $unLibro): ?>
                 <div class="fichaLibro">
-                    <?php echo "<img class='portada' src=assets/img/$unLibro->portada>" ?>
+                    <?php
+                    // Mostramos la portada del libro
+                    echo "<img class='portada' src=assets/img/$unLibro->portada>" ?>
                     <div class="infoLibro">
                         <?php
+                        //Información del libro.
                         echo "<p> Titulo: $unLibro->titulo</p>";
                         echo "<p> Autor: $unLibro->autor</p>";
                         echo "<p> Categoría: $unLibro->categoria</p>";
@@ -50,10 +42,8 @@
 
         </div>
 
-
-       
-
     <?php else:
+        // Mensaje mostrado si no se puede cargar la lista de libros (posiblemente $libros no está definido o está vacío)
         echo "Error al cargar libros";
     endif;
     ?>

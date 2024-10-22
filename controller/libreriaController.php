@@ -1,23 +1,39 @@
 <?php
+//Importa la libreria para poder crear el objeto del modelo. 
 require_once 'model/libreriaModel.php';
 
 
+//Creación de la clase controlador
 class LibreriaController
 {
+    //Creo el atributo donde guardare el modelo
     private $modelo;
-
+    // Con el método constructor cargo la variable.
     public function __construct()
     {
         $this->modelo = new LibreriaModel();
     }
 
+    //Función que controla el tiempo de cada sesión.
+    public function verificarSesion()
+    {
+        $tiempoMaximo = 60 * 30;
+        if (isset($_SESSION['tiempoSesion']) && (time() - $_SESSION['tiempoSesion'] > $tiempoMaximo)) {
+            session_unset(); // Borro las variables de sesión
+            session_destroy(); // Destruyo la sesión
+            header("Location: index.php"); // Redirijo al usuario al login
+            exit();
+        }
+    }
+
+    // Defino el método que utilizare para listar los libros, llamandola desde el modelo y retornado el valor en una variable.
     public function listarLibros()
     {
         $libros = $this->modelo->cargarLibros();
         return $libros;
 
     }
-
+    //Creo un método para validar el usuario que ha iniciado sesion, bien sea admin o user. 
     public function iniciarSesion()
     {
         // verico que si existan las variables de usuario y contraseña enviadas por el formulario.
@@ -33,8 +49,13 @@ class LibreriaController
                 // Si las credenciales son correctas, se guarda el usuario en la sesión.
                 $_SESSION["user"] = "Admin";
 
-                // También guardo el tiempo de inicio de la sesión para gestionar la duración.
-                $_SESSION['tiempoSesion'] = time();
+                // Llamo a el método para ver si aun se mantiene activa la sesion en caso de recarga de la web. 
+                $this->verificarSesion();
+
+                // si no esta guardado el tiempo de sesion lo guardo en una variable, en caso que ya este no lo hago. 
+                if (!isset($_SESSION['tiempoSesion'])) {
+                    $_SESSION['tiempoSesion'] = time();
+                }
 
                 //Envio la vista
                 include 'view/adminView.php';
@@ -46,10 +67,11 @@ class LibreriaController
                 // Si las credenciales son correctas, se guarda el usuario en la sesión.
                 $_SESSION["user"] = "user";
 
-                // También guardo el tiempo de inicio de la sesión para gestionar la duración.
-                $_SESSION['tiempoSesion'] = time();
+                $this->verificarSesion();
 
-                //Realizo el include de la vista
+                if (!isset($_SESSION['tiempoSesion'])) {
+                    $_SESSION['tiempoSesion'] = time();
+                }
                 include 'view/usuarioView.php';
                 exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
             } else {
