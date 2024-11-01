@@ -162,7 +162,13 @@
 
 
 }
-
+/* Mensajes de error */
+.centrado{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+color: rebeccapurple;
+}
 
  
 

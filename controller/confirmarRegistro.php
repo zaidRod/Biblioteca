@@ -1,4 +1,5 @@
 <?php
+include_once "../model/bibliotecaBd.php";
 // Se reciben los datos enviados desde el formulario de registro, que igualmente se solicitan al servidor ya que allí se almacenan las variables.
 if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && isset($_POST["password"])) {
     $nombre = $_POST["name"];
@@ -7,9 +8,12 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
     $password = $_POST["password"];
 
 }
+//Base de datos
+$consulta = "SELECT * FROM `usuarios` where nick_usuario = ? ";
+$comprobacion = BibliotecaBd::consultaLectura($consulta, $nick );
+if ($comprobacion === null) :
 
-// En esta función se recibe como parametro la edad y se evalua es es niño, joven o senior, y dependiendo se realiza un return.
-// Función realizada de lado del servidor.
+
 function consultarEdad($valor)
 {
     if ($valor >= 15 && $valor <= 20) {
@@ -67,3 +71,9 @@ echo "<div class='contenedor'>
 
     </form>
 </div>
+<?php
+else:
+    echo "<div class='centrado'> Usuario existente, intente de nuevo <div>";
+    BibliotecaBd::cerrarConexion(); 
+endif;
+?>
