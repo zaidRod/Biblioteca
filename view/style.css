@@ -162,6 +162,39 @@
 
 
 }
+/*Tabla de usuarios*/
+
+.titulosTabla{
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* Espacio entre los títulos */
+  justify-content: center;
+  font-weight: bold; /* Poner los títulos en negrita */
+  font-size: 1.1em; /* Tamaño de fuente un poco más grande */
+  color: #333; /* Color de texto más oscuro */
+  background-color: #e0e0e0; 
+  padding: 10px 0; /* Espacio alrededor de los títulos */
+  border-radius: 5px; /* Bordes redondeados */
+  margin: 0 200px;
+}
+
+.listadoFila{
+  display: flex;
+  gap: 10px; /* Espacio entre las columnas */
+  justify-content: center;
+  padding: 10px 0; /* Espacio interno de la fila */
+}
+
+.col{
+  padding: 10px; /* Espacio alrededor del texto */
+  width: 120px; /* Ajusta el tamaño de las columnas */
+  text-align: center;
+  background-color: #fff; /* Fondo blanco para las celdas */
+  border: 1px solid #ccc; /* Borde gris claro para las celdas */
+  border-radius: 3px; /* Bordes redondeados */
+}
+
+
 /* Mensajes de error */
 .contenedorCentrado{
   display: flex;

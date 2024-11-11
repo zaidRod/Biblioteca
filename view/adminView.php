@@ -21,7 +21,8 @@
 
     <div class="contenedorEnlaces">
         <div class="fichaEnlaces">
-            <a>
+            <a href="view/gestionUsuariosView.php">
+                
                <img class="iconoGestion" src="assets/img/gClientes.png">
             </a>
             <p> Gestión de clientes </p>

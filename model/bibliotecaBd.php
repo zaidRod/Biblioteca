@@ -41,8 +41,8 @@ class BibliotecaBd
                 //Verifica si el paramtero es un número o un string
                 $tipos .= is_int($parametro) ? 'i' : 's';
             }
+            $preparacion->bind_param($tipos, ...$parametros);
         }
-        $preparacion->bind_param($tipos, ...$parametros);
         return $preparacion;
     }
 
