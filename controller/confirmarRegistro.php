@@ -8,12 +8,6 @@ if (isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && is
     $password = $_POST["password"];
 
 }
-//Base de datos
-$consulta = "SELECT * FROM `usuarios` where nick_usuario = ? ";
-$comprobacion = BibliotecaBd::consultaLectura($consulta, $nick );
-if ($comprobacion === null) :
-
-
 function consultarEdad($valor)
 {
     if ($valor >= 15 && $valor <= 20) {
@@ -30,50 +24,53 @@ function consultarEdad($valor)
 ?>
 <link rel="stylesheet" href="../view/style.css">
 <?php
-echo "<div class='contenedor'>
+//Consulta para ver si el usuario ya existe. 
+$consulta = "SELECT * FROM `usuarios` where nick_usuario = ? ";
+$comprobacion = BibliotecaBd::consultaLectura($consulta, $nick);
+//No existe
+if ($comprobacion === null):
+    echo "<div class='contenedor'>
     <img  class='imagen' src='../view/icono.PNG'>
     <p class='textoCab'> Pantalla de confirmación </p> </div>";
-?>
-<div class="formulario">
-    <p class="titulo"> Confirmación </p>
-    <form action="confirmacion.php" method="post">
-        <!--Muestro los valores recibidos a la vez que los relleno en los input ocultos para enviarlos en caso de correción -->
-        <div class="camposForm">
-            <label> Nombre: </label>
-            <input name="name" value="<?php echo $nombre; ?>">
-        </div>
+    ?>
+    <div class="formulario">
+        <p class="titulo"> Confirmación </p>
+        <form action="confirmacion.php" method="post">
+            <!--Muestro los valores recibidos a la vez que los relleno en los input ocultos para enviarlos en caso de correción -->
+            <div class="camposForm">
+                <label> Nombre: </label>
+                <input name="name" value="<?php echo $nombre; ?>">
+            </div>
 
-        <div class="camposForm">
-            <label> Edad: </label>
+            <div class="camposForm">
+                <label> Edad: </label>
+                <input name="young" value="<?php echo consultarEdad($edad); ?>">
+                <!-- Aca coloco un campo adicional oculto donde guardare el valor de la edad para pasarlo al otro formulario -->
+                <input type="hidden" name="age" value="<?php echo $edad; ?>">
 
-            <!-- Se realiza la solicitud al servidor, llamando a la funcion, la cual retorna el valor que el cliente recibe como parte del HTML -->
+            </div>
 
-            <input name="young" value="<?php echo consultarEdad($edad); ?>">
-            <!-- Aca coloco un campo adicional oculto donde guardare el valor de la edad para pasarlo al otro formulario -->
-            <input type="hidden" name="age" value="<?php echo $edad; ?>">
+            <div class="camposForm">
+                <label> Nick: </label>
+                <input name="nick" value="<?php echo $nick; ?>">
+            </div>
 
-        </div>
-
-        <div class="camposForm">
-            <label> Nick: </label>
-            <input name="nick" value="<?php echo $nick; ?>">
-        </div>
-
-        <div class="camposForm">
-            <label> Contraseña: </label>
-            <input name="password" value="<?php echo $password; ?>">
-        </div>
-        <!-- Se realiza el envio de los datos de nuevo al formulario anterior -->
-
-        <button type="submit" formaction="formularioRegistro.php">Corregir Datos</button>
-        <button type="submit"> Enviar </button>
+            <div class="camposForm">
+                <label> Contraseña: </label>
+                <input name="password" maxlength="6" value="<?php echo $password; ?>">
+            </div>
+            <!-- Se realiza el envio de los datos de nuevo al formulario anterior -->
+            <button type="submit" formaction="formularioRegistro.php">Corregir Datos</button>
+            <button type="submit"> Enviar </button>
 
 
-    </form>
-</div>
-<?php
+        </form>
+    </div>
+    <?php
+    //Si existe
 else:
-    echo "<div class='centrado'> Usuario existente, intente de nuevo <div>";
-    BibliotecaBd::cerrarConexion(); 
+    echo "<div class='contenedorCentrado'> <div class='contenido'> Usuario ya existente, intente de nuevo. <br> <a href='formularioRegistro.php'> Volver al formulario </a> </div>
+     <div>";
+    BibliotecaBd::cerrarConexion();
 endif;
 ?>

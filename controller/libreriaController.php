@@ -1,7 +1,7 @@
 <?php
 //Importa la libreria para poder crear el objeto del modelo. 
 require_once 'model/libreriaModel.php';
-
+require_once 'model/bibliotecaBd.php';
 
 //Creación de la clase controlador
 class LibreriaController
@@ -39,50 +39,65 @@ class LibreriaController
         // verico que si existan las variables de usuario y contraseña enviadas por el formulario.
         if (isset($_POST['user']) && isset($_POST['password'])) {
 
-            // Esto ocurre en el servidor para su posterior verificación.
+            //Guardo los valores enviados por post
             $usuario = $_POST['user'];
             $contra = $_POST['password'];
 
-            // Verifico si es admin o usuario y retorno las vistas correspondientes.
-            if ($usuario == 'admin' && $contra == 'abcdef') {
+            $credencialesCorrectas = $this->comprobarContrasena($usuario, $contra);
 
-                // Si las credenciales son correctas, se guarda el usuario en la sesión.
-                $_SESSION["user"] = "Admin";
 
-                // Llamo a el método para ver si aun se mantiene activa la sesion en caso de recarga de la web. 
-                $this->verificarSesion();
+            if ($credencialesCorrectas == "correcto") {
+                //Guardado del tiempo de sesión.
+        
+                if ($usuario == "admin") {
+                    $_SESSION["user"] = "Admin";
+                    if (!isset($_SESSION['tiempoSesion'])) {
+                        $_SESSION['tiempoSesion'] = time();
+                    } 
+                    $this->verificarSesion();
+                    //Envio la vista
+                    include 'view/adminView.php';
+                    exit();
 
-                // si no esta guardado el tiempo de sesion lo guardo en una variable, en caso que ya este no lo hago. 
-                if (!isset($_SESSION['tiempoSesion'])) {
-                    $_SESSION['tiempoSesion'] = time();
+                } else {
+                    $libros = $this->modelo->cargarLibros();
+                    $_SESSION["user"] = $usuario;
+                    if (!isset($_SESSION['tiempoSesion'])) {
+                        $_SESSION['tiempoSesion'] = time();
+                    } 
+                    $this->verificarSesion();
+                    include 'view/usuarioView.php';
+                    exit();
                 }
 
-                //Envio la vista
-                include 'view/adminView.php';
-                exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
-
-            } elseif ($usuario == 'user' && $contra == '123') {
-
-                $libros = $this->modelo->cargarLibros();
-                // Si las credenciales son correctas, se guarda el usuario en la sesión.
-                $_SESSION["user"] = "user";
-
-                $this->verificarSesion();
-
-                if (!isset($_SESSION['tiempoSesion'])) {
-                    $_SESSION['tiempoSesion'] = time();
-                }
-                include 'view/usuarioView.php';
-                exit(); // Se finaliza la ejecución para asegurarse de que no se ejecuta más código.
+            } elseif ($credencialesCorrectas == "contraseñaIncorrecta") {
+                echo "<div class='contenedorCentrado'> <div class='contenido'> Contraseña incorrecta, intente de nuevo. <br> <a href='index.php'> Volver al formulario </a> </div> <div>";
             } else {
-                // Si las credenciales son incorrectas, redirijo al usuario nuevamente a index.php.
-                header(header: "Location: index.php");
-                exit(); // Se finaliza la ejecución.
+                echo "<div class='contenedorCentrado'> <div class='contenido'> No existe ese usuario, intente de nuevo. <br> <a href='index.php'> Volver al formulario </a> </div> <div>";
             }
         }
 
+    }
 
+    public function comprobarContrasena($usuario, $contraseña)
+    {
+        $consulta = "SELECT * FROM `usuarios` where nick_usuario = ? ";
+        $resultado = BibliotecaBd::consultaLectura($consulta, $usuario);
+        $salida = "";
 
+        $hashContraIngresada = hash('sha256', $contraseña);
+
+        if ($resultado == true && count($resultado) > 0) {
+            $contaUsuario = $resultado[0]['contrasena'];
+            if ($hashContraIngresada == $contaUsuario) {
+                return $salida = "correcto";
+            } else {
+                return $salida = "contraseñaIncorrecta";
+            }
+
+        } else {
+            return $salida = "usuarioNoExiste";
+        }
 
     }
 

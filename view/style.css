@@ -163,11 +163,18 @@
 
 }
 /* Mensajes de error */
-.centrado{
+.contenedorCentrado{
   display: flex;
-  text-align: center;
   justify-content: center;
-color: rebeccapurple;
+  align-items: center;
+  height: 100vh;
+}
+
+.contenido{
+  padding: 20px;
+    background-color: lightblue;
+    border-radius: 8px;
+    text-align: center;
 }
 
  

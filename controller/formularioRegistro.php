@@ -48,7 +48,7 @@ echo "<div class='contenedor'>
 
         <div class="camposForm">
             <label> Contraseña: </label>
-            <input type="password" name="password" maxlength="5" value="<?php echo $password; ?>" required>
+            <input type="password" name="password" maxlength="6" value="<?php echo $password; ?>" required>
         </div class="camposForm">
         
         <div class="grupoBoton">

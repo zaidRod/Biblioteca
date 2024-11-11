@@ -2,11 +2,10 @@
 class BibliotecaBd
 {
     private static $conexion = null;
-
     private static function conexionBd()
     {
         //Credenciales de la base de datos.  
-        $ficheroConfig = parse_ini_file("../config.ini");
+        $ficheroConfig = parse_ini_file(__DIR__ . "../config.ini");
         //Valaido si hay una conexión previamente establecida
         if (self::$conexion === null) {
             self::$conexion = new mysqli($ficheroConfig['server'], $ficheroConfig['user'], $ficheroConfig['pasw'], 'biblioteca');
@@ -26,6 +25,7 @@ class BibliotecaBd
         if ($preparacion->execute()) {
             return true;
         } else {
+            //En caso de error se retorna
             return false;
         }
     }
@@ -38,6 +38,7 @@ class BibliotecaBd
         if ($parametros) {
             $tipos = "";
             foreach ($parametros as $parametro) {
+                //Verifica si el paramtero es un número o un string
                 $tipos .= is_int($parametro) ? 'i' : 's';
             }
         }
@@ -53,7 +54,6 @@ class BibliotecaBd
         $resultado = $preparacion->get_result();
 
         //Comprobación de resultados
-
         if ($resultado->num_rows > 0) {
             return $resultado->fetch_all(MYSQLI_ASSOC);
         } else {
