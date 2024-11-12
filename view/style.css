@@ -186,12 +186,16 @@
 }
 
 .col{
+  display: flex;
   padding: 10px; /* Espacio alrededor del texto */
   width: 120px; /* Ajusta el tamaño de las columnas */
   text-align: center;
   background-color: #fff; /* Fondo blanco para las celdas */
   border: 1px solid #ccc; /* Borde gris claro para las celdas */
   border-radius: 3px; /* Bordes redondeados */
+  justify-content: center;
+  align-items: center;
+  
 }
 
 
@@ -208,6 +212,14 @@
     background-color: lightblue;
     border-radius: 8px;
     text-align: center;
+}
+
+/* Iconos del control de usuarios*/
+.icono{
+  width: 20px;
+  height: 20px;
+  
+  
 }
 
  
