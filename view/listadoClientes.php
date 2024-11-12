@@ -23,7 +23,7 @@ if ($usuarios !== null): ?>
             <div class="col"> <img class="icono" src="../assets/img/passwordIcon.png" alt="Contraseña" > </div>
 
             <div class="col"><a href="gestionUsuariosView.php?action=editar&id=<?php echo $usuario['id'] ?>"> <img class="icono" src="../assets/img/editIcon.png" alt="Editar" ></a> </div>
-            <div class="col"><a href="gestionUsuariosView.php?action=borrar&id=<?php echo $usuario['id'] ?>"> <img class="icono" src="../assets/img/removeIcon.png" alt="Editar" ></a> </div>
+            <div class="col"><a href="gestionUsuariosView.php?action=borrar&id=<?php echo $usuario['id'] ?>" onclick="return confirm('Estas seguro')"> <img class="icono" src="../assets/img/removeIcon.png" alt="Borrar" ></a> </div>
 
         </div>
     <?php endforeach; ?>

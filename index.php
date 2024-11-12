@@ -26,11 +26,16 @@ session_start() ?>
     if (isset($_GET['action'])) {
         $action = $_GET['action'];
 
-        if ($action == 'login') {
-            //Llamo al controller con el método de inciar sesión
-            $controller->iniciarSesion();
+        switch ($action) {
+            case "login" :
+                $controller->iniciarSesion();
+                break;
+            case "cerrarSesion":
+                $controller->cerrarSesion();                
+                break;
+
+
         }
-        // En caso contrario muestro el formulario
     } else {
         include 'view/formularioInicio.html';
     }

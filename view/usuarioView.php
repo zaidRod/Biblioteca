@@ -13,7 +13,8 @@
     // Almacenamos el usuario y la hora de inicio de sesión extraídos de la sesión para mostrarlos en la interfaz
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
-    echo "<p class='campoUsuario'> user: $usuario | hora de inicio: $horaInicio </p>";
+    echo "<div class='campoUsuario'> <div> user: $usuario | hora de inicio: $horaInicio </div> <a class='botonCerrarSesion' href='index.php?action=cerrarSesion'> Cerrar sesión </a> </div>";
+    
     ?>
 
     <!-- Verifico que se haya creado la variable  $libros antes de crear la tabla -->

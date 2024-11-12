@@ -17,13 +17,19 @@ class LibreriaController
     //Función que controla el tiempo de cada sesión.
     public function verificarSesion()
     {
-        $tiempoMaximo = 60 * 30;
+        $tiempoMaximo = 20;
         if (isset($_SESSION['tiempoSesion']) && (time() - $_SESSION['tiempoSesion'] > $tiempoMaximo)) {
             session_unset(); // Borro las variables de sesión
             session_destroy(); // Destruyo la sesión
             header("Location: index.php"); // Redirijo al usuario al login
             exit();
         }
+    }
+
+    public function cerrarSesion() {
+        session_unset(); // Borro las variables de sesión
+        session_destroy(); // Destruyo la sesión.
+        include 'view/formularioInicio.html';
     }
 
     // Defino el método que utilizare para listar los libros, llamandola desde el modelo y retornado el valor en una variable.

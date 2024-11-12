@@ -36,6 +36,11 @@ class bibliotecaControlador
 
     }
 
+    public function verificarSesion(){
+        $controlador= new LibreriaController();
+        $controlador->verificarSesion();
+    }
+
 
 
 }

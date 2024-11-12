@@ -16,7 +16,12 @@
 
  }
  .campoUsuario{
-    text-align: right;
+  display: flex;              /* Activa Flexbox */
+  flex-direction: column;     /* Coloca los elementos en columna */
+  align-items: flex-end;    /* Alinea los elementos al inicio de la columna */
+  gap: 10px;   
+  margin: 10px;
+
  }
  
  .textoCab {
@@ -220,6 +225,15 @@
   height: 20px;
   
   
+}
+
+.botonCerrarSesion{
+  padding: 10px 15px;
+  background-color: #65686b;   /* Color de fondo */
+  color: white;                /* Color del texto */
+  text-decoration: none;       /* Quita el subrayado del enlace */
+  border-radius: 5px;
+
 }
 
  
