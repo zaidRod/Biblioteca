@@ -36,7 +36,7 @@
         </div>
 
         <div class="fichaEnlaces">
-            <a>
+            <a href="view/gestionPedidosView.php">
                 <img class="iconoGestion" src="assets/img/gPedidos.png">
             </a>
             <p> Gestión de pedidos </p>

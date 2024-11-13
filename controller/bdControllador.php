@@ -30,7 +30,45 @@ class bibliotecaControlador
     public function eliminarCiente($id)
     {
         $consulta = "DELETE from usuarios where id=?";
-        $eliminacion = BibliotecaBd::consultaInsercion($consulta,$id);
+        $eliminacion = BibliotecaBd::consultaInsercion($consulta, $id);
+        /* si se realiza la eliminación retorna un true */
+        return $eliminacion;
+
+    }
+
+    //Manejo de pedidos
+    public function listarPedidos()
+    {
+        $consulta = "SELECT * FROM `pedidos`";
+        $pedidos = BibliotecaBd::consultaLectura($consulta);
+        include 'listadoPedidosView.php';
+
+    }
+
+    public function cargarPedido($id)
+    {
+        $consulta = "SELECT * FROM `pedidos` WHERE `id` = ?";
+        $pedidos = BibliotecaBd::consultaLectura($consulta, $id);
+        //Cargo en el usuario el primer resultado del array
+        $pedido = $pedidos = true ? $pedidos[0] : null;
+
+        include 'actualizacionPedidoView.php';
+
+    }
+
+    public function actualizarPedido($id, $titulo, $isbn, $fecha, $usuario)
+    {
+        $consulta = "UPDATE pedidos set titulo =?, isbn=?, fecha=?, usuario=? where id = ?";
+        $actualizacion = BibliotecaBd::consultaInsercion($consulta, $titulo, $isbn, $fecha, $usuario, $id);
+        /* si se realiza la actualización retorna un true */
+        return $actualizacion;
+
+    }
+
+    public function eliminarPedido($id)
+    {
+        $consulta = "DELETE from pedidos where id=?";
+        $eliminacion = BibliotecaBd::consultaInsercion($consulta, $id);
         /* si se realiza la eliminación retorna un true */
         return $eliminacion;
 
