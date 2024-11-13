@@ -15,8 +15,8 @@
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
     // El servidor responde con la información del usuario y la hora de inicio y los coloca en la cabecera.
-    echo "<div class='campoUsuario'> <div> user: $usuario | hora de inicio: $horaInicio </div> <a class='botonCerrarSesion' href='index.php?action=cerrarSesion'> Cerrar sesión </a> </div>";
-    echo " <p class='titulo'> Bienvenido a LibroSphere <p> ";
+    echo "<div class='campoUsuario'> <div> user: $usuario | hora de inicio: $horaInicio </div> <a class='boton' href='index.php?action=cerrarSesion'> Cerrar sesión </a> </div>";
+    echo " <p class='titulo'> Bienvenido a LibroSphere <p> ";    
     ?>
 
     <div class="contenedorEnlaces">

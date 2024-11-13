@@ -12,9 +12,15 @@ if (isset($_POST['titulo']) && isset($_POST['isbn']) && isset($_POST['fecha'])) 
     $accion = BibliotecaBd::consultaInsercion($consulta, $titulo, $isbn, $fecha, $usuario);
     //Verifico si se realiza el pedido
     if ($accion) {
-        echo "Pedido realizado";
-        //Redirijo al index un parametro get para luego poder cargar los libros del usuario. 
-        echo "<a href='../index.php?action=sesionUsuarioYaIniciada'> Volver al listado de productos. </a>";
+        $titulo = "Pedido realizado";
+        $mensaje = "¡Pedido hecho!";
+        $enlaceUrl = "../index.php?action=sesionUsuarioYaIniciada";
+        $enlaceTexto = "Volver";
+        $usuario = $_SESSION['user'];
+        $horaInicio = $_SESSION['tiempoSesion'];
+
+        include 'confirmacionTemplate.php';
+
     } else {
         echo "Problema con la Base de datos";
     }

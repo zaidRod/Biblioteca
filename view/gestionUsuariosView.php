@@ -23,13 +23,17 @@
         // Mostrar las variables de sesión
         echo "<div class='campoUsuario'>
                 <div> user: $usuario | hora de inicio: $horaInicio </div>
-                <a class='botonCerrarSesion' href='../index.php?action=cerrarSesion'> Cerrar sesión </a>
               </div>";
+        //Botones de cerrar sesion y volver
+        echo "<div class='contenedorBotones'>
+                <a class='boton' href='../index.php?action=reanudarSesionAdmin'> Volver </a> 
+                <a class='boton' href='../index.php?action=cerrarSesion'> Cerrar sesión </a>
+             </div>";
     } else {
         // Si no hay sesión, mostrar un mensaje
         echo "<p>No se ha iniciado sesión o la sesión ha expirado.</p>";
     }
-    
+
     $listado = new bibliotecaControlador();
 
 
@@ -43,7 +47,7 @@
         case 'borrar':
 
             if ($listado->eliminarCiente($id)) {
-                
+
             } else {
                 echo "<script> alert('Error en el borrado')</script>";
             }

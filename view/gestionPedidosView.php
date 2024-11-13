@@ -23,8 +23,12 @@
         // Mostrar las variables de sesión
         echo "<div class='campoUsuario'>
                 <div> user: $usuario | hora de inicio: $horaInicio </div>
-                <a class='botonCerrarSesion' href='../index.php?action=cerrarSesion'> Cerrar sesión </a>
               </div>";
+        //Botones de cerrar sesion y volver
+        echo "<div class='contenedorBotones'>
+                <a class='boton' href='../index.php?action=reanudarSesionAdmin'> Volver </a> 
+                <a class='boton' href='../index.php?action=cerrarSesion'> Cerrar sesión </a>
+             </div>";
     } else {
         // Si no hay sesión, mostrar un mensaje
         echo "<p>No se ha iniciado sesión o la sesión ha expirado.</p>";
@@ -47,8 +51,8 @@
             } else {
                 echo "<script> alert('Error en el borrado')</script>";
             }
-            //No coloco el break para que cargue el listado de pedidos. 
-            
+        //No coloco el break para que cargue el listado de pedidos. 
+    
 
 
         default:

@@ -27,15 +27,19 @@ session_start() ?>
         $action = $_GET['action'];
 
         switch ($action) {
-            case "login" :
+            case "login":
                 $controller->iniciarSesion();
                 break;
             case "cerrarSesion":
-                $controller->cerrarSesion();                
+                $controller->cerrarSesion();
                 break;
             case "sesionUsuarioYaIniciada":
                 //Llamada al controlador para recargar la vista de usuario con el listado de libros.
-                $controller->retomarSesion();                
+                $controller->retomarSesion();
+                break;
+            case "reanudarSesionAdmin":
+                //Llamada al controlador para recargar la vista de usuario con el listado de libros.
+                $controller->retomarSesionAdmin();
                 break;
 
 

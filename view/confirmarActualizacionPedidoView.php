@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../controller/bdControllador.php";
 $cliente = new bibliotecaControlador();
 if (isset($_POST["id"]) && isset($_POST["titulo"]) && isset($_POST["isbn"]) && isset($_POST["fecha"]) && isset($_POST["usuario"])) {
@@ -18,7 +19,14 @@ if (isset($_POST["id"]) && isset($_POST["titulo"]) && isset($_POST["isbn"]) && i
 
         )
     ) {
-        echo "<h1> Actualización completada. </h1> <a href='gestionPedidosView.php'> Volver </a>";
+        $titulo = "Confirmación de actualización";
+        $mensaje = "¡Actualización completada!";
+        $enlaceUrl = "gestionPedidosView.php";
+        $enlaceTexto = "Volver";
+        $usuario = $_SESSION['user'];
+        $horaInicio = $_SESSION['tiempoSesion'];
+
+        include 'confirmacionTemplate.php';
 
     } else {
         echo "<h1> Error de actualización </h1> <a href='gestionPedidosView.php'> Volver </a>";

@@ -4,241 +4,267 @@
 */
 
 /*Cabecera*/
- .contenedor {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
- }
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
- .imagen {
-     height: 100px;
-     width: 300px;
+.imagen {
+  height: 100px;
+  width: 300px;
 
- }
- .campoUsuario{
-  display: flex;              /* Activa Flexbox */
-  flex-direction: column;     /* Coloca los elementos en columna */
-  align-items: flex-end;    /* Alinea los elementos al inicio de la columna */
-  gap: 10px;   
+}
+
+.campoUsuario {
+  display: flex;
+  /* Activa Flexbox */
+  flex-direction: column;
+  /* Coloca los elementos en columna */
+  align-items: flex-end;
+  /* Alinea los elementos al inicio de la columna */
+  gap: 10px;
   margin: 10px;
 
- }
- 
- .textoCab {
-    background-color: beige;
-    margin-right: 20px;
-    padding: 40px;
-    font-size: 20px;
+}
+
+.textoCab {
+  background-color: beige;
+  margin-right: 20px;
+  padding: 40px;
+  font-size: 20px;
 
 }
 
 
 
- .titulo {
-    text-align: center;
-    font-size: 30px;
-    
- }
+.titulo {
+  text-align: center;
+  font-size: 30px;
+
+}
 
 
 /*Formularios*/
 
- .enlace {
-     
-     font-size: 15px;
-     text-decoration: underline;
-     margin: 20px;
-     display: inline-block;
-     
- }
+.enlace {
 
- .formulario {
-     text-align: center;
-     
- }
-
- .camposForm {
-     margin: 20px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
-
- label{
-    margin-right:10px ;
-    width: 80px;
- }
-
- input {
-    border-radius: 4px;
-    margin-inline: 15px;
-    
- }
-
- button {
-    margin-inline: 10px;
- }
-
- /* Vista de usuario */
-
- .portada{
-   height: 150px;
-   width: 100px;
-   margin-right: 20px;
-
- }
-
- .promo{
-   color: orange;
-   font-weight: bold;
- }
- 
- .contenedorLibros{
-   display: flex;
-   flex-direction: column;
-   gap: 30px;
-   align-items: center;
-   justify-content: center;
-   
- }
-
- .fichaLibro{
-   padding: 10px;
-   display: flex;
-   align-items: center;
-   border-radius: 8px;
-   border: 1px solid black;
-   width: 400px;
-   position: relative;
-   height: 200px;
-
- }
-
- .contenedorBotonComprar{
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-end;
-   height: 100%; 
- }
-
- .botonComprar{
-   margin-bottom: 15px;
- }
- .infoLibro{
-   height: 180px;
-   width: 220px;
- }
-
- /* Vista de administador*/
- .contenedorEnlaces {
-   display: flex;
-   flex-direction: row;
-   gap: 70px;
-   align-items: center;
-   justify-content: center;
-   padding-top: 20px;
-   
-}
-
-  .fichaEnlaces{
-   padding: 10px;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   border-radius: 8px;
-   border: 1px solid black;
-   width: 150px;
-   
-   
-   
-
- } 
-
-
- a {
-   cursor: pointer;
-}
-
- .iconoGestion{
-   height: 150px;
-   width: 100px;
-   padding: 10px;
-
+  font-size: 15px;
+  text-decoration: underline;
+  margin: 20px;
+  display: inline-block;
 
 }
-/*Tabla de usuarios*/
 
-.titulosTabla{
+.formulario {
+  text-align: center;
+
+}
+
+.camposForm {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  margin-right: 10px;
+  width: 80px;
+}
+
+input {
+  border-radius: 4px;
+  margin-inline: 15px;
+
+}
+
+button {
+  margin-inline: 10px;
+}
+
+/* Vista de usuario */
+
+.portada {
+  height: 150px;
+  width: 100px;
+  margin-right: 20px;
+
+}
+
+.promo {
+  color: orange;
+  font-weight: bold;
+}
+
+.contenedorLibros {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.fichaLibro {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid black;
+  width: 400px;
+  position: relative;
+  height: 200px;
+
+}
+
+.contenedorBotonComprar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.botonComprar {
+  margin-bottom: 15px;
+}
+
+.infoLibro {
+  height: 180px;
+  width: 220px;
+}
+
+/* Vista de administador*/
+.contenedorEnlaces {
   display: flex;
   flex-direction: row;
-  gap: 10px; /* Espacio entre los títulos */
+  gap: 70px;
+  align-items: center;
   justify-content: center;
-  font-weight: bold; /* Poner los títulos en negrita */
-  font-size: 1.1em; /* Tamaño de fuente un poco más grande */
-  color: #333; /* Color de texto más oscuro */
-  background-color: #e0e0e0; 
-  padding: 10px 0; /* Espacio alrededor de los títulos */
-  border-radius: 5px; /* Bordes redondeados */
+  padding-top: 20px;
+
+}
+
+.fichaEnlaces {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid black;
+  width: 150px;
+
+
+
+
+}
+
+
+a {
+  cursor: pointer;
+}
+
+.iconoGestion {
+  height: 150px;
+  width: 100px;
+  padding: 10px;
+
+
+}
+
+/*Tabla de usuarios*/
+
+.titulosTabla {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  /* Espacio entre los títulos */
+  justify-content: center;
+  font-weight: bold;
+  /* Poner los títulos en negrita */
+  font-size: 1.1em;
+  /* Tamaño de fuente un poco más grande */
+  color: #333;
+  /* Color de texto más oscuro */
+  background-color: #e0e0e0;
+  padding: 10px 0;
+  /* Espacio alrededor de los títulos */
+  border-radius: 5px;
+  /* Bordes redondeados */
   margin: 0 200px;
 }
 
-.listadoFila{
+.listadoFila {
   display: flex;
-  gap: 10px; /* Espacio entre las columnas */
+  gap: 10px;
+  /* Espacio entre las columnas */
   justify-content: center;
-  padding: 10px 0; /* Espacio interno de la fila */
+  padding: 10px 0;
+  /* Espacio interno de la fila */
 }
 
-.col{
+.col {
   display: flex;
-  padding: 10px; /* Espacio alrededor del texto */
-  width: 120px; /* Ajusta el tamaño de las columnas */
+  padding: 10px;
+  /* Espacio alrededor del texto */
+  width: 120px;
+  /* Ajusta el tamaño de las columnas */
   text-align: center;
-  background-color: #fff; /* Fondo blanco para las celdas */
-  border: 1px solid #ccc; /* Borde gris claro para las celdas */
-  border-radius: 3px; /* Bordes redondeados */
+  background-color: #fff;
+  /* Fondo blanco para las celdas */
+  border: 1px solid #ccc;
+  /* Borde gris claro para las celdas */
+  border-radius: 3px;
+  /* Bordes redondeados */
   justify-content: center;
   align-items: center;
-  
+
 }
 
 
 /* Mensajes de error */
-.contenedorCentrado{
+.contenedorCentrado {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-direction: column; /* Coloca los elementos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding-top: 20px;
+  
+  
+  
 }
 
-.contenido{
+.contenido {
   padding: 20px;
-    background-color: lightblue;
-    border-radius: 8px;
-    text-align: center;
+  background-color: lightblue;
+  border-radius: 8px;
+  text-align: center;
 }
 
 /* Iconos del control de usuarios*/
-.icono{
+.icono {
   width: 20px;
   height: 20px;
-  
-  
+
+
 }
 
-.botonCerrarSesion{
+/*Contendor de los botones de cierre y retorno de la vista de Admin*/
+.contenedorBotones {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+}
+
+.boton {
   padding: 10px 15px;
-  background-color: #65686b;   /* Color de fondo */
-  color: white;                /* Color del texto */
-  text-decoration: none;       /* Quita el subrayado del enlace */
+  background-color: #65686b;
+  /* Color de fondo */
+  color: white;
+  /* Color del texto */
+  text-decoration: none;
+  /* Quita el subrayado del enlace */
   border-radius: 5px;
 
 }
-
- 
-
-
-
-
- 
