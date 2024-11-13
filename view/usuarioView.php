@@ -10,11 +10,12 @@
 
 <body>
     <?php
+
     // Almacenamos el usuario y la hora de inicio de sesión extraídos de la sesión para mostrarlos en la interfaz
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
     echo "<div class='campoUsuario'> <div> user: $usuario | hora de inicio: $horaInicio </div> <a class='botonCerrarSesion' href='index.php?action=cerrarSesion'> Cerrar sesión </a> </div>";
-    
+
     ?>
 
     <!-- Verifico que se haya creado la variable  $libros antes de crear la tabla -->
@@ -36,7 +37,14 @@
                         ?>
                     </div>
                     <div class="contenedorBotonComprar">
-                        <button class="botonComprar"> Comprar </button>
+                        <form action="view/realizarPedidoView.php" method="post">
+                            <input type="hidden" name="titulo" value="<?php echo $unLibro->titulo; ?>">
+                            <input type="hidden" name="isbn" value="<?php echo $unLibro->isbn ?>">
+                            <input type="hidden" name="fecha" value="<?php echo date("Y-m-d") ?>">
+
+                            <button type="submit" class="botonComprar"> Comprar </button>
+                        </form>
+
                     </div>
                 </div>
             <?php endforeach; ?>

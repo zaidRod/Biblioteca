@@ -26,7 +26,8 @@ class LibreriaController
         }
     }
 
-    public function cerrarSesion() {
+    public function cerrarSesion()
+    {
         session_unset(); // Borro las variables de sesión
         session_destroy(); // Destruyo la sesión.
         include 'view/formularioInicio.html';
@@ -54,12 +55,12 @@ class LibreriaController
 
             if ($credencialesCorrectas == "correcto") {
                 //Guardado del tiempo de sesión.
-        
+
                 if ($usuario == "admin") {
                     $_SESSION["user"] = "Admin";
                     if (!isset($_SESSION['tiempoSesion'])) {
                         $_SESSION['tiempoSesion'] = time();
-                    } 
+                    }
                     $this->verificarSesion();
                     //Envio la vista
                     include 'view/adminView.php';
@@ -70,7 +71,7 @@ class LibreriaController
                     $_SESSION["user"] = $usuario;
                     if (!isset($_SESSION['tiempoSesion'])) {
                         $_SESSION['tiempoSesion'] = time();
-                    } 
+                    }
                     $this->verificarSesion();
                     include 'view/usuarioView.php';
                     exit();
@@ -83,6 +84,13 @@ class LibreriaController
             }
         }
 
+    }
+
+    public function retomarSesion()
+    {
+        $libros = $this->modelo->cargarLibros();
+        include 'view/usuarioView.php';
+        exit();
     }
 
     public function comprobarContrasena($usuario, $contraseña)

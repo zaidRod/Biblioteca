@@ -33,6 +33,11 @@ session_start() ?>
             case "cerrarSesion":
                 $controller->cerrarSesion();                
                 break;
+            case "sesionUsuarioYaIniciada":
+                //Llamada al controlador para recargar la vista de usuario con el listado de libros.
+                $controller->retomarSesion();                
+                break;
+
 
 
         }
