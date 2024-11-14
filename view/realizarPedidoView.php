@@ -9,11 +9,13 @@
 </head>
 
 <body>
-
     <?php
+    include "../controller/funciones.php";
+      
     session_start();
     $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);
     $usuario = $_SESSION["user"];
+    verificarSesion();
     echo "<div class='contenedor'>
       <img  class='imagen' src='icono.PNG'>
       <p class='textoCab'> Confirmar pedido </p> </div>";

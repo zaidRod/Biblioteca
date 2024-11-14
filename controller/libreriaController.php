@@ -17,7 +17,7 @@ class LibreriaController
     //Función que controla el tiempo de cada sesión.
     public function verificarSesion()
     {
-        $tiempoMaximo = 60 * 30;
+        $tiempoMaximo = 60*30;
         if (isset($_SESSION['tiempoSesion']) && (time() - $_SESSION['tiempoSesion'] > $tiempoMaximo)) {
             session_unset(); // Borro las variables de sesión
             session_destroy(); // Destruyo la sesión

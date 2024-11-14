@@ -13,6 +13,7 @@
     //Para poder usar los datos de la sesion.
     session_start();
     include "../controller/bdControllador.php";
+    include "../controller/funciones.php";
     echo "<div class='contenedor'>
     <img  class='imagen' src='icono.PNG'>
     <p class='textoCab'> Gestion de pedidos </p> </div>";
@@ -20,6 +21,7 @@
     if (isset($_SESSION["user"]) && isset($_SESSION["tiempoSesion"])) {
         $usuario = $_SESSION["user"];
         $horaInicio = date('h:i:s A', $_SESSION["tiempoSesion"]);  // Formatear la hora de inicio
+        verificarSesion();
         // Mostrar las variables de sesión
         echo "<div class='campoUsuario'>
                 <div> user: $usuario | hora de inicio: $horaInicio </div>

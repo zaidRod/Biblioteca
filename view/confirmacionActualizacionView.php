@@ -1,5 +1,6 @@
 <?php
 include "../controller/bdControllador.php";
+include "../controller/funciones.php";
 session_start();
 $cliente = new bibliotecaControlador();
 if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["age"]) && isset($_POST["nick"]) && isset($_POST["password"])) {
@@ -8,6 +9,7 @@ if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["age"]) && isse
     $nick = $_POST["nick"];
     $password = $_POST["password"];
     $id = $_POST["id"];
+    //La contraseña no se envia en texto plano, sino como un hash encriptado. 
     $hash = hash('sha256', $password);
     if ($cliente->actualizarCliente($id, $nombre, $edad, $nick, $hash
     )) {
@@ -17,7 +19,8 @@ if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["age"]) && isse
         $enlaceTexto = "Volver";
         $usuario = $_SESSION['user'];
         $horaInicio = $_SESSION['tiempoSesion'];
-
+        //Antes de mandar la vista, verifico que no se haya excedido el tiempo de la sesion.
+        verificarSesion();
         include 'confirmacionTemplate.php';
 
     } else {

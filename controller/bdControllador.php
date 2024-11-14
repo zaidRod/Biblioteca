@@ -2,9 +2,12 @@
 require_once '../model/bibliotecaBd.php';
 class bibliotecaControlador
 {
+
     public function listarClientes()
-    {
+    { 
+        //Creación de la consulta SQL.
         $consulta = "SELECT * FROM `usuarios`";
+        //LLamado al controlador biblioteca para que realize la consulta.
         $usuarios = BibliotecaBd::consultaLectura($consulta);
         include '../view/listadoClientes.php';
     }
@@ -19,7 +22,8 @@ class bibliotecaControlador
     }
 
     public function actualizarCliente($id, $nombre, $edad, $nick, $contrasena)
-    {
+    {   
+        //Recibe los parametros que se pasan como ? para evitar inyeccion SQL. 
         $consulta = "UPDATE usuarios set nombre =?, edad =?, nick_usuario=?, contrasena=? where id = ?";
         $actualizacion = BibliotecaBd::consultaInsercion($consulta, $nombre, $edad, $nick, $contrasena, $id);
         /* si se realiza la actualización retorna un true */

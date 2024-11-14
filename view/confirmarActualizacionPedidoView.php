@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../controller/bdControllador.php";
+include "../controller/funciones.php";
 $cliente = new bibliotecaControlador();
 if (isset($_POST["id"]) && isset($_POST["titulo"]) && isset($_POST["isbn"]) && isset($_POST["fecha"]) && isset($_POST["usuario"])) {
     $titulo = $_POST["titulo"];
@@ -25,7 +26,8 @@ if (isset($_POST["id"]) && isset($_POST["titulo"]) && isset($_POST["isbn"]) && i
         $enlaceTexto = "Volver";
         $usuario = $_SESSION['user'];
         $horaInicio = $_SESSION['tiempoSesion'];
-
+        //Antes de mandar la vista, verifico que no se haya excedido el tiempo de la sesion.        
+        verificarSesion();
         include 'confirmacionTemplate.php';
 
     } else {

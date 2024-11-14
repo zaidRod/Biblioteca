@@ -4,7 +4,7 @@ class BibliotecaBd
     private static $conexion = null;
     private static function conexionBd()
     {
-        //Credenciales de la base de datos.  
+        //Credenciales de la base de datos desde el fichero config.ini.  
         $ficheroConfig = parse_ini_file(__DIR__ . "../config.ini");
         //Valaido si hay una conexión previamente establecida
         if (self::$conexion === null) {
@@ -18,6 +18,7 @@ class BibliotecaBd
         return self::$conexion;
     }
 
+    // Metodo que realizara los insert, en función de los parametros establecidos. 
     public static function consultaInsercion($consulta, ...$parametros)
     {
         $conexion = self::conexionBd();
@@ -31,7 +32,7 @@ class BibliotecaBd
     }
 
 
-
+    // Esta función valida si hay parametros en la consulta y los prepara distinguiendo entre string y integer.
     private static function preparar($conexion, $consulta, ...$parametros)
     {
         $preparacion = $conexion->prepare($consulta);
@@ -46,7 +47,8 @@ class BibliotecaBd
         return $preparacion;
     }
 
-    public static function consultaLectura($consulta, ...$parametros)
+    //Función que retornara los datos consultados.
+    public static function consultaLectura($consulta, ...$parametros): mixed
     {
         $conexion = self::conexionBd();
         $preparacion = self::preparar($conexion, $consulta, ...$parametros);

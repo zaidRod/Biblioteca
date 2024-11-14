@@ -69,6 +69,10 @@ if ($comprobacion === null):
     <?php
     //Si existe
 else:
+  
+    echo "<div class='contenedor'>
+    <img  class='imagen' src='../view/icono.PNG'>
+    <p class='textoCab'> Pantalla de confirmación </p> </div>";
     echo "<div class='contenedorCentrado'> <div class='contenido'> Usuario ya existente, intente de nuevo. <br> <a href='formularioRegistro.php'> Volver al formulario </a> </div>
      <div>";
     BibliotecaBd::cerrarConexion();

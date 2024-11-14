@@ -24,7 +24,7 @@ if ($pedidos !== null): ?>
             <div class="col"><?php echo $pedido['usuario'] ?></div>
 
             <div class="col"><a href="gestionPedidosView.php?action=editar&id=<?php echo $pedido['id'] ?>"> <img class="icono" src="../assets/img/editIcon.png" alt="Editar" ></a> </div>
-            <div class="col"><a href="gestionPedidosView.php?action=borrar&id=<?php echo $pedido['id'] ?>" onclick="return confirm('Estas seguro')"> <img class="icono" src="../assets/img/removeIcon.png" alt="Borrar" ></a> </div>
+            <div class="col"><a href="gestionPedidosView.php?action=borrar&id=<?php echo $pedido['id'] ?>" onclick="return confirm('¿Estas seguro?')"> <img class="icono" src="../assets/img/removeIcon.png" alt="Borrar" ></a> </div>
 
         </div>
     <?php endforeach; ?>
