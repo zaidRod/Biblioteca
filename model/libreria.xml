@@ -490,14 +490,5 @@
         <fecha>2011-02-11</fecha>
         <portada>portada_49.png</portada>
     </libro>
-    <libro>
-        <titulo>La isla del tesoro</titulo>
-        <autor>Robert Louis Stevenson</autor>
-        <categoria>Clásico</categoria>
-        <isbn>9780451530974</isbn>
-        <edicion>9</edicion>
-        <promocion>no</promocion>
-        <fecha>1883-11-14</fecha>
-        <portada>portada_50.png</portada>
-    </libro>
-<libro><titulo>Milibro</titulo><autor>Yo</autor><categoria>ciencia ficcion</categoria><isbn>12345</isbn><edicion>1</edicion><promocion>si</promocion><fecha>1994-06-29</fecha><portada>portada_1.png</portada></libro></libros>
+    
+</libros>

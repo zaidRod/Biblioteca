@@ -177,7 +177,11 @@ a {
 
 .titulosTabla {
   display: flex;
-  flex-direction: row;
+  gap: 10px;
+  /* Espacio entre las columnas */
+  justify-content: center;
+  padding: 10px 0;
+  display: flex;
   gap: 10px;
   /* Espacio entre los títulos */
   justify-content: center;
@@ -186,13 +190,10 @@ a {
   font-size: 1.1em;
   /* Tamaño de fuente un poco más grande */
   color: #333;
-  /* Color de texto más oscuro */
-  background-color: #e0e0e0;
-  padding: 10px 0;
   /* Espacio alrededor de los títulos */
   border-radius: 5px;
   /* Bordes redondeados */
-  margin: 0 200px;
+
 }
 
 .listadoFila {
@@ -226,12 +227,30 @@ a {
 /* Mensajes de error */
 .contenedorCentrado {
   display: flex;
-  flex-direction: column; /* Coloca los elementos en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  padding-top: 20px;
-  
-  
-  
+  justify-content: center;
+  align-items: center;
+    /* Ajusta la altura según lo necesario */
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  /* Ancho máximo del contenedor */
+  text-align: center;
+  background-color: #f4f4f4;
+  /* Fondo gris claro */
+  border: 1px solid #ccc;
+  /* Borde gris */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  font-family: Arial, sans-serif;
+  /* Fuente básica */
+  font-size: 18px;
+  /* Tamaño del texto */
+  color: #333;
+  /* Color del texto */
+
+
+
+
 }
 
 .contenido {
@@ -267,4 +286,15 @@ a {
   /* Quita el subrayado del enlace */
   border-radius: 5px;
 
+}
+
+.contenedorTabla {
+  background-color: lightgray; /* Gris oscuro */
+  margin: 10px auto;
+  width: 80%;
+  /* Establece un ancho fijo o relativo */
+  border: solid;
+  border-radius: 8px;
+  padding: 10px;
+  border-style: none;
 }
