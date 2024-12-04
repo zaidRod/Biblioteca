@@ -1,12 +1,10 @@
 <?php
 header("Content-Type: application/json");
-/* require_once '/../controller/libreriaController.php'; */
 
 
 $method = $_SERVER['REQUEST_METHOD'];
 $pathInfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : null;
 $request = $pathInfo ? explode('/', trim($pathInfo, '/')) : [];
-
 
 // Función para retornar el total de libros.
 
@@ -15,7 +13,6 @@ function retornarLibros($isbn = null)
     $xmlFile = "../model/libreria.xml";
     //$controller = new LibreriaController();
     $libros = simplexml_load_file(  $xmlFile);
-    $libroEncontrado = false;
 
     foreach ($libros->libro as $unLibro) {
         if ($isbn == null || (string) $unLibro->isbn === $isbn) {
@@ -32,8 +29,6 @@ function retornarLibros($isbn = null)
             
         }
     }
-
-
     return $consulta;
 }
 

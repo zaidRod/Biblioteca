@@ -9,7 +9,7 @@
     <h2>Listar libros</h2>
     <form method="GET" action="">
         <label>ISBN (opcional):</label>
-        <input type="text" name="isbn" placeholder="12345678910">
+        <input type="text" name="isbn" placeholder="12345678910 ">
         <button type="submit">Listar</button>
     </form>
 
